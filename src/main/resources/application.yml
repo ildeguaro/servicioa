@@ -1,0 +1,48 @@
+## YAML Template.
+
+spring:
+  application:
+   name: serva
+---
+spring:
+ profiles:
+  active: docker
+---
+spring:
+ profiles: dev 
+server:
+ port: 4000
+ url_serv_b: http://localhost:4000
+datasource:
+ driverClassName: com.mysql.jdbc.Driver
+ url: jdbc:mysql://localhost/gsgtech
+ username: root
+ password: root
+ testWhileIdle: false
+ validationQuery: SELECT 1
+ jpa:
+  show-sql: true
+  hibernate:
+       ddl-auto: update
+       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  properties:
+       hibernate:
+         dialect : org.hibernate.dialect.MySQL5Dialect
+---   
+spring:
+ profiles: docker
+server:
+ port: 4000
+ url_serv_b: http://servb:5000/
+spring.datasource:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://127.0.0.1/gsgtech
+  username: root
+  password: 123456
+
+spring.jpa:
+  hibernate:
+    dialect: org.hibernate.dialect.MySQLInnoDBDialect
+    ddl-auto: update
+logging:
+   level.org.springframework: ERROR
