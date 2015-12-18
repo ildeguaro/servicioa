@@ -1,1 +1,13 @@
-/target/
+.classpath
+.project
+.settings/
+.springBeans
+.gradle/
+build/
+bin/
+target/
+git.properties
+.idea/
+*.iml
+.DS_Store
+.factorypath
